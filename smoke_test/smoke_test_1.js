@@ -42,18 +42,15 @@ describe("smoke_test_1", () => {
         cy.wrap($el).click();
       });
       cy.contains('тван').click();   
-      cy.get('span[class="multiselect__placeholder"]').eq(0).click();
-      cy.contains('KZ11311311AK125555').click();   
-      cy.get('span[class="multiselect__placeholder"]').eq(0).click();
-      cy.contains('Счет получателя').scrollIntoView().should('be.visible');  
-      cy.contains('KZ55264AQ5561516').click({ force: true });
-      cy.get('span[class="multiselect__placeholder"]').first().click({ force: true });
+      cy.get('span[class="multiselect__placeholder"]').eq(0).type('new{enter}');        
+      cy.get('.multiselect__placeholder').first().type('{downarrow}{enter}');   
+      cy.get('span[class="multiselect__placeholder"]').first().click();
       cy.contains('раз').click();
       cy.get('button[class="button button--size-sm button--is-centered button--state-filled"]').click();
     });
     it("Если появляется сообщение 'Платеж успешно сохранен'- тест пройден", () => {
       cy.get('div[class="notification__body"]').should('have.text', 'Платеж успешно сохранен'); 
-    });
+    });//{downarrow}
 });
 
 

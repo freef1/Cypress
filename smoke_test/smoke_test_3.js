@@ -25,8 +25,7 @@ describe("smoke_test_3", () => {
       });  
       cy.get('span[class="multiselect__placeholder"]').first().click();
       cy.contains('KZ11311311AK125555').click();   
-      cy.get('span[class="multiselect__placeholder"]').eq(0).click();
-      cy.contains('KZ55264AQ5561516').click({force: true});
+      cy.get('.multiselect__placeholder').first().type('{downarrow}{enter}');      
       cy.get('span[class="multiselect__placeholder"]').last().click({force: true});
       cy.contains('раз').click();
       cy.get('#__nuxt').should('not.contain', 'Статья расходов')
